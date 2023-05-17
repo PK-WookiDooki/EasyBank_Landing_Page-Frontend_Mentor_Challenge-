@@ -1,0 +1,13 @@
+export { default as Confetti } from "./images/image-confetti.jpg";
+export { default as Currency } from "./images/image-currency.jpg";
+export { default as Mockups } from "./images/image-mockups.png";
+export { default as Plane } from "./images/image-plane.jpg";
+export { default as Restaurant } from "./images/image-restaurant.jpg";
+export { default as Icon } from "./images/favicon-32x32.png";
+export { default as Logo } from "./images/logo.svg";
+export { default as MBg } from "./images/bg-intro-mobile.svg";
+export { default as DBg } from "./images/bg-intro-desktop.svg";
+export { default as Budget } from "./images/icon-budgeting.svg";
+export { default as OnBoard } from "./images/icon-onboarding.svg";
+export { default as Online } from "./images/icon-online.svg";
+export { default as Api } from "./images/icon-api.svg";
