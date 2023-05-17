@@ -13,27 +13,28 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section[id]");
+      const scrollTop =
+        window.pageXOffset || document.documentElement.scrollTop;
+
+      let minDistance = Infinity;
+      let closestSection = null;
+      sections.forEach((section) => {
+        const distance = Math.abs(section.offsetTop - scrollTop);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestSection = section.id;
+        }
+      });
+      setIsActive(closestSection);
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const handleScroll = () => {
-    const sections = document.querySelectorAll("section[id]");
-    const scrollTop = window.pageXOffset || document.documentElement.scrollTop;
-
-    let minDistance = Infinity;
-    let closestSection = null;
-    sections.forEach((section) => {
-      const distance = Math.abs(section.offsetTop - scrollTop);
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestSection = section.id;
-      }
-    });
-    setIsActive(closestSection);
-  };
 
   return (
     <div className="sticky top-0 shadow bg-LGray z-20">
@@ -46,8 +47,8 @@ const Navbar = () => {
             smooth
             to={"#home"}
             className={`h-16 ${
-              isActive === "home" ? "border-LGreen" : ""
-            } text-gray-400 flex items-center px-3 border-b-4 border-transparent hover:border-LGreen hover:text-DBlue duration-200`}
+              isActive == "home" ? "border-LGreen" : "border-transparent"
+            } text-gray-400 flex items-center px-3 border-b-4  hover:border-LGreen hover:text-DBlue duration-200`}
           >
             Home
           </HashLink>
@@ -55,8 +56,8 @@ const Navbar = () => {
             smooth
             to={"#services"}
             className={`h-16 ${
-              isActive === "services" ? "border-LGreen" : ""
-            } text-gray-400 flex items-center px-3 border-b-4 border-transparent hover:border-LGreen hover:text-DBlue duration-200`}
+              isActive == "services" ? "border-LGreen" : "border-transparent"
+            } text-gray-400 flex items-center px-3 border-b-4  hover:border-LGreen hover:text-DBlue duration-200`}
           >
             About
           </HashLink>
@@ -64,8 +65,8 @@ const Navbar = () => {
             smooth
             to={"#contact"}
             className={`h-16 ${
-              isActive === "contact" ? "border-LGreen" : ""
-            } text-gray-400 flex items-center px-3 border-b-4 border-transparent hover:border-LGreen hover:text-DBlue duration-200`}
+              isActive == "contact" ? "border-LGreen" : "border-transparent"
+            } text-gray-400 flex items-center px-3 border-b-4  hover:border-LGreen hover:text-DBlue duration-200`}
           >
             Contact
           </HashLink>
@@ -73,8 +74,8 @@ const Navbar = () => {
             smooth
             to={"#blogs"}
             className={`h-16 ${
-              isActive === "blogs" ? "border-LGreen" : ""
-            } text-gray-400 flex items-center px-3 border-b-4 border-transparent hover:border-LGreen hover:text-DBlue duration-200`}
+              isActive == "blogs" ? "border-LGreen" : "border-transparent"
+            } text-gray-400 flex items-center px-3 border-b-4  hover:border-LGreen hover:text-DBlue duration-200`}
           >
             Blog
           </HashLink>
@@ -82,8 +83,8 @@ const Navbar = () => {
             smooth
             to={"#careers"}
             className={`h-16 ${
-              isActive === "careers" ? "border-LGreen" : ""
-            } text-gray-400 flex items-center px-3 border-b-4 border-transparent hover:border-LGreen hover:text-DBlue duration-200`}
+              isActive == "careers" ? "border-LGreen" : "border-transparent"
+            } text-gray-400 flex items-center px-3 border-b-4  hover:border-LGreen hover:text-DBlue duration-200`}
           >
             Careers
           </HashLink>
@@ -119,8 +120,8 @@ const Navbar = () => {
             smooth
             to={"#home"}
             className={`h-10 ${
-              isActive === "home" ? "border-LGreen" : ""
-            } text-DBlue flex items-center justify-center px-3 border-b-4 border-transparent hover:border-LGreen duration-200`}
+              isActive == "home" ? "border-LGreen" : "border-transparent"
+            } text-DBlue flex items-center justify-center px-3 border-b-4  hover:border-LGreen duration-200`}
             // onClick={handleMenu}
           >
             Home
@@ -129,8 +130,8 @@ const Navbar = () => {
             smooth
             to={"#services"}
             className={`h-10 ${
-              isActive === "services" ? "border-LGreen" : ""
-            } text-DBlue flex items-center justify-center px-3 border-b-4 border-transparent hover:border-LGreen duration-200`}
+              isActive == "services" ? "border-LGreen" : "border-transparent"
+            } text-DBlue flex items-center justify-center px-3 border-b-4  hover:border-LGreen duration-200`}
             // onClick={handleMenu}
           >
             About
@@ -139,8 +140,8 @@ const Navbar = () => {
             smooth
             to={"#contact"}
             className={`h-10 ${
-              isActive === "contact" ? "border-LGreen" : ""
-            } text-DBlue flex items-center justify-center px-3 border-b-4 border-transparent hover:border-LGreen duration-200`}
+              isActive == "contact" ? "border-LGreen" : "border-transparent"
+            } text-DBlue flex items-center justify-center px-3 border-b-4  hover:border-LGreen duration-200`}
             // onClick={handleMenu}
           >
             Contact
@@ -149,8 +150,8 @@ const Navbar = () => {
             smooth
             to={"#blogs"}
             className={`h-10 ${
-              isActive === "blogs" ? "border-LGreen" : ""
-            } text-DBlue flex items-center justify-center px-3 border-b-4 border-transparent hover:border-LGreen duration-200`}
+              isActive == "blogs" ? "border-LGreen" : "border-transparent"
+            } text-DBlue flex items-center justify-center px-3 border-b-4  hover:border-LGreen duration-200`}
             // onClick={handleMenu}
           >
             Blog
@@ -159,8 +160,8 @@ const Navbar = () => {
             smooth
             to={"#careers"}
             className={`h-10 ${
-              isActive === "careers" ? "border-LGreen" : ""
-            } text-DBlue flex items-center justify-center px-3 border-b-4 border-transparent hover:border-LGreen duration-200`}
+              isActive == "careers" ? "border-LGreen" : "border-transparent"
+            } text-DBlue flex items-center justify-center px-3 border-b-4  hover:border-LGreen duration-200`}
             // onClick={handleMenu}
           >
             Careers
